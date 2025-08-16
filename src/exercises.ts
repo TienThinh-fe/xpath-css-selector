@@ -35,8 +35,9 @@ export const exercises: Exercise[] = [
     targetElement: 'The main action button in the form',
     hints: [
       'Look for a button element',
-      'Try using the tag name selector',
-      "The button contains text 'Sign In'",
+      'CSS: Use tag name selector "button"',
+      'XPath: Use "//button" to find any button',
+      "Advanced: CSS button:contains('Sign In') or XPath //button[text()='Sign In']",
     ],
     validSelectors: [
       'button',
@@ -54,8 +55,9 @@ export const exercises: Exercise[] = [
     targetElement: "The navigation link that has the 'active' class",
     hints: [
       'Look for an element with a specific class',
-      'Use the class selector syntax',
-      'The active link is visually different',
+      'CSS: Use class selector ".active"',
+      'XPath: Use "//*[@class=\'nav-link active\']" or "//*[contains(@class, \'active\')]"',
+      'The active link is visually different from others',
     ],
     validSelectors: [
       '.active',
@@ -74,8 +76,9 @@ export const exercises: Exercise[] = [
     targetElement: "The button with ID 'save-profile'",
     hints: [
       'Look for an element with a unique identifier',
-      'Use the ID selector syntax',
-      'IDs are unique on a page',
+      'CSS: Use ID selector "#save-profile"',
+      'XPath: Use "//*[@id=\'save-profile\']"',
+      'IDs are unique on a page - most specific selector',
     ],
     validSelectors: [
       '#save-profile',
@@ -93,10 +96,10 @@ export const exercises: Exercise[] = [
     difficulty: 'easy',
     targetElement: 'Required input elements inside the contact form',
     hints: [
-      'Start by targeting the contact form first',
-      'Then look for required inputs within that form',
-      'Use descendant selectors or XPath axes',
-      'The contact form has an ID for easier targeting',
+      'Start by targeting the contact form with ID first',
+      'CSS: Use "#contact-form input[required]" to target form then required inputs',
+      'XPath: Use "//form[@id=\'contact-form\']//input[@required]" (form then descendants)',
+      'Descendant selectors help scope to specific containers',
     ],
     validSelectors: [
       '#contact-form input[required]',
@@ -116,8 +119,9 @@ export const exercises: Exercise[] = [
     targetElement: "The button containing the text 'Out of Stock'",
     hints: [
       'Look for text content within an element',
-      'Use text-based selectors',
-      'The button has different styling',
+      'CSS: Use "button:contains(\'Out of Stock\')" for text matching',
+      'XPath: Use "//button[text()=\'Out of Stock\']" or "//button[contains(text(), \'Out of Stock\')]"',
+      'Text-based selectors are powerful for finding elements by content',
     ],
     validSelectors: [
       "//button[text()='Out of Stock']",
@@ -133,8 +137,10 @@ export const exercises: Exercise[] = [
     difficulty: 'medium',
     targetElement: 'The second data row (not including header)',
     hints: [
-      'Use positional selectors',
-      'Remember to account for the header row',
+      'Use positional selectors to target specific rows',
+      'CSS: Use "tr:nth-child(3)" (3rd because header is 1st)',
+      'XPath: Use "//tr[2]" for second row or "//tbody/tr[1]" if tbody exists',
+      'Remember to account for the header row in counting',
       'CSS has nth-child selector',
     ],
     validSelectors: [
@@ -153,9 +159,10 @@ export const exercises: Exercise[] = [
     difficulty: 'medium',
     targetElement: 'Checkboxes inside the first settings section',
     hints: [
-      'Use descendant selectors',
-      'Look for the relationship between parent and child elements',
-      'The section has specific content',
+      'Use descendant selectors to target nested elements',
+      'CSS: Use ".settings-section:first-child input[type=\'checkbox\']"',
+      "XPath: Use \"//div[@class='settings-section'][1]//input[@type='checkbox']\"",
+      'Combine parent selector with descendant input selector',
     ],
     validSelectors: [
       ".settings-section:first-child input[type='checkbox']",
@@ -174,8 +181,9 @@ export const exercises: Exercise[] = [
     targetElement: "File elements with data-type='document'",
     hints: [
       'Look for elements with specific attribute values',
-      'Use attribute value selectors',
-      'Documents have a specific data type',
+      'CSS: Use "[data-type=\'document\']" for attribute value matching',
+      'XPath: Use "//*[@data-type=\'document\']" or "//span[@data-type=\'document\']"',
+      'Data attributes are commonly used for categorization',
     ],
     validSelectors: [
       "[data-type='document']",
@@ -194,8 +202,9 @@ export const exercises: Exercise[] = [
       "The status indicator with both 'success' and 'active' classes",
     hints: [
       'Look for elements with multiple classes',
-      'Use multiple class selectors',
-      'The element has two specific classes',
+      'CSS: Use ".success.active" (no space between class selectors)',
+      "XPath: Use \"//*[contains(@class, 'success') and contains(@class, 'active')]\"",
+      'Multiple class matching requires AND logic',
     ],
     validSelectors: [
       '.status-indicator.success.active',
@@ -213,9 +222,10 @@ export const exercises: Exercise[] = [
     difficulty: 'medium',
     targetElement: "Error message elements without the 'hidden' class",
     hints: [
-      "Look for elements that don't have a specific class",
-      'Use negation selectors',
-      'Some error messages are hidden',
+      'Look for elements that exclude specific classes',
+      'CSS: Use ".error-message:not(.hidden)" for negation',
+      "XPath: Use \"//div[contains(@class, 'error-message') and not(contains(@class, 'hidden'))]\"",
+      'Negation selectors help exclude unwanted elements',
     ],
     validSelectors: [
       '.error-message:not(.hidden)',
@@ -234,8 +244,9 @@ export const exercises: Exercise[] = [
     targetElement: "News items with data-priority='high' inside loaded content",
     hints: [
       'Look for nested conditions with multiple attributes',
-      'Combine ancestor and attribute selectors',
-      'The content section has a data-loaded attribute',
+      "CSS: Use \"[data-loaded='true'] .news-item[data-priority='high']\"",
+      "XPath: Use \"//div[@data-loaded='true']//div[@data-priority='high']\"",
+      'Combine ancestor conditions with descendant attribute matching',
     ],
     validSelectors: [
       "[data-loaded='true'] .news-item[data-priority='high']",
@@ -253,9 +264,10 @@ export const exercises: Exercise[] = [
     difficulty: 'hard',
     targetElement: "Buttons with class 'plus' inside quantity controls",
     hints: [
-      'Look for buttons with specific class and content',
-      'The buttons are part of quantity controls',
-      'Use both class and text content',
+      'Look for buttons with specific class and context',
+      'CSS: Use ".quantity-btn.plus" or "button.plus"',
+      'XPath: Use "//button[contains(@class, \'plus\')]" or "//button[text()=\'+\']"',
+      'Can target by class or by text content (+)',
     ],
     validSelectors: [
       '.quantity-btn.plus',
@@ -274,8 +286,9 @@ export const exercises: Exercise[] = [
     targetElement: 'The close button within the modal content',
     hints: [
       'Look inside modal-specific containers',
-      'The close button has a specific class',
-      'Use descendant selectors for modal structure',
+      'CSS: Use ".modal-content .modal-close"',
+      "XPath: Use \"//div[@class='modal-content']//button[@class='modal-close']\"",
+      'Use descendant selectors to scope within modal structure',
     ],
     validSelectors: [
       '.modal-content .modal-close',
@@ -292,9 +305,10 @@ export const exercises: Exercise[] = [
     difficulty: 'hard',
     targetElement: 'The step number inside the active step',
     hints: [
-      'Look for the active step first',
-      'Then find the step number within it',
-      'Use descendant relationships',
+      'Look for the active step first, then find number within it',
+      'CSS: Use ".step.active .step-number" (active step then descendant number)',
+      "XPath: Use \"//div[contains(@class, 'active')]/div[contains(@class, 'step-number')]\"",
+      'Chain selectors: parent condition + descendant target',
     ],
     validSelectors: [
       '.step.active .step-number',
@@ -311,9 +325,10 @@ export const exercises: Exercise[] = [
     difficulty: 'hard',
     targetElement: "Role badge elements that contain 'Admin' text",
     hints: [
-      'Look for role badges with specific content',
-      'Use class and text content selectors',
-      'Admin badges have specific styling',
+      'Look for role badges with specific text content',
+      'CSS: Use ".role-badge:contains(\'Admin\')" for text matching',
+      "XPath: Use \"//span[contains(@class, 'role-badge') and text()='Admin']\"",
+      'Combine class selector with text content matching',
     ],
     validSelectors: [
       '.role-badge.admin',
@@ -331,8 +346,9 @@ export const exercises: Exercise[] = [
     targetElement: 'The featured submenu link within the products section',
     hints: [
       'Navigate through nested menu structure',
-      'Look for submenu within specific parent',
-      'The link has multiple classes',
+      'CSS: Use ".has-submenu .submenu .featured" (parent → submenu → link)',
+      "XPath: Use \"//li[contains(@class, 'has-submenu')]//a[contains(@class, 'featured')]\"",
+      'Chain multiple descendant relationships for deep nesting',
     ],
     validSelectors: [
       '.submenu .submenu-link.featured',
@@ -349,9 +365,10 @@ export const exercises: Exercise[] = [
     difficulty: 'hard',
     targetElement: "The calendar day cell with the 'today' class",
     hints: [
-      "Look for a specific day with today's styling",
-      'Today has a different appearance',
-      'Use the today class selector',
+      'Look for calendar cell with special today styling',
+      'CSS: Use ".today" or "td.today" for today\'s date',
+      'XPath: Use "//td[contains(@class, \'today\')]" or "//*[@class=\'today\']"',
+      "Today's date has distinctive visual styling",
     ],
     validSelectors: [
       '.day.today',
@@ -368,9 +385,10 @@ export const exercises: Exercise[] = [
     difficulty: 'hard',
     targetElement: "The bold tool button with data-command='bold'",
     hints: [
-      'Look in the toolbar area',
-      'The button has a data-command attribute',
-      'Bold button has specific styling',
+      'Look for button with specific data attribute',
+      'CSS: Use "[data-command=\'bold\']" or ".tool-btn[data-command=\'bold\']"',
+      'XPath: Use "//button[@data-command=\'bold\']"',
+      'Data attributes provide semantic information about button function',
     ],
     validSelectors: [
       '.tool-btn.bold',
@@ -389,8 +407,9 @@ export const exercises: Exercise[] = [
     targetElement: "List items with data-status='completed'",
     hints: [
       'Look for items with specific status attribute',
-      'Completed items have different styling',
-      'Use attribute value selectors',
+      'CSS: Use "[data-status=\'completed\']" or "li[data-status=\'completed\']"',
+      'XPath: Use "//li[@data-status=\'completed\']"',
+      'Status attributes help identify item states',
     ],
     validSelectors: [
       ".list-item[data-status='completed']",
@@ -408,8 +427,9 @@ export const exercises: Exercise[] = [
     targetElement: 'Activity icons within the activity widget',
     hints: [
       'Look inside the activity widget specifically',
-      'Icons have a specific class pattern',
-      'Use descendant selectors for widget structure',
+      'CSS: Use ".activity-widget .activity-icon" (widget then descendant icons)',
+      "XPath: Use \"//div[contains(@class, 'activity-widget')]//div[contains(@class, 'activity-icon')]\"",
+      'Widget structure requires descendant navigation for scoped selection',
     ],
     validSelectors: [
       '.activity-widget .activity-icon',

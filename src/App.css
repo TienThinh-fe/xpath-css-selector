@@ -112,6 +112,68 @@ textarea[required]:focus {
   color: #374151;
 }
 
+/* Calendar navigation buttons styling */
+.nav-btn {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  color: #6b7280;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+  color: #374151;
+}
+
+.nav-btn.prev {
+  border-color: #d1d5db;
+}
+
+.nav-btn.next {
+  border-color: #d1d5db;
+}
+
+/* Widget menu button styling (three dots button) */
+.widget-menu {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 0.375rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.widget-menu:hover {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+.widget-menu:focus {
+  outline: none;
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
 .status-indicator {
   width: 0.75rem;
   height: 0.75rem;
