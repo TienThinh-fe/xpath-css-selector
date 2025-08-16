@@ -7,6 +7,8 @@ import {
   checkAnswer,
   getSelectorType,
 } from '../utils'
+import { Drawer } from './ui/Drawer'
+import { ReferenceContent } from './ui/ReferenceContent'
 
 interface ExercisePageProps {
   exercise: Exercise
@@ -36,6 +38,7 @@ export const ExercisePage: React.FC<ExercisePageProps> = ({
   }>({ type: null, message: '' })
   const [showHint, setShowHint] = useState(false)
   const [currentHintIndex, setCurrentHintIndex] = useState(0)
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const exerciseContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -145,6 +148,13 @@ export const ExercisePage: React.FC<ExercisePageProps> = ({
               </span>
             </div>
             <div className="flex space-x-2">
+              <button
+                onClick={() => setIsDrawerOpen(true)}
+                className="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
+                title="Quick Reference"
+              >
+                📚 Reference
+              </button>
               <button
                 onClick={onGoToWelcome}
                 className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 transition-colors"
@@ -288,6 +298,11 @@ export const ExercisePage: React.FC<ExercisePageProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Reference Drawer */}
+      <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
+        <ReferenceContent />
+      </Drawer>
     </div>
   )
 }
