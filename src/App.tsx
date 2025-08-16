@@ -14,7 +14,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
     const exerciseParam = urlParams.get('exercise')
-    
+
     if (exerciseParam) {
       const exerciseNumber = parseInt(exerciseParam, 10)
       if (exerciseNumber >= 1 && exerciseNumber <= exercises.length) {
